@@ -1,0 +1,36 @@
+#include <iostream>
+#include <ctime>
+#include <cmath>
+
+using namespace std;
+
+int f(int i) {
+	if (i <= 0) return 0;
+
+	int b = 3, c = 3;
+	long sum = 0;
+
+	for (int n = 0; n < pow(10, 8); n++)
+		sum += b * 2 + c - i;
+
+	return f(i - 1) + sum;
+}
+
+int main() {
+
+	setlocale(LC_ALL, "rus");
+
+	int  n;
+	long long result = 0;
+
+	cout << "Введите n" << endl;
+	cin >> n;
+	cout << "\nВыполняется..." << endl;
+	for (int i = 0; i < n; i++) {
+		result = f(i);
+	}
+
+	cout << "Последний элемент = " << result << endl;
+	cout << "Время работы программы = " << clock() / 1000000.0 << " секунд" << endl;
+	return 0;
+}
